@@ -1,0 +1,7 @@
+# Compiled executable
+/battery-notifier
+
+# Vala-generated C and object files
+/battery-notifier.c
+/battery-notifier.vala.c
+*.o
