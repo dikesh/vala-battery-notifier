@@ -1,7 +1,7 @@
 // Build: valac --pkg gio-2.0 -o battery-notifier battery-notifier.vala
 // Run: ./battery-notifier (inside a desktop session with UPower and notifications).
-// Watches BAT0; alerts at <=30%, then each lower 5% threshold while discharging.
-// Starting below 30% alerts immediately; repeated updates do not repeat alerts.
+// Watches BAT0; alerts at <=35%, then each lower 5% threshold while discharging.
+// Starting below 35% alerts immediately; repeated updates do not repeat alerts.
 // Each threshold rearms only after recovery 2 percentage points above it.
 // Urgency is normal above 20%, critical at <=20%; UPower restarts preserve alerts.
 
@@ -15,7 +15,7 @@ public class BatteryNotifier : Object {
 
   private DBusProxy battery;
   private DBusProxy notifications;
-  private int next_threshold = 30;
+  private int next_threshold = 35;
 
   public async BatteryNotifier () throws Error {
     battery = yield new DBusProxy.for_bus (
@@ -71,7 +71,7 @@ public class BatteryNotifier : Object {
     stdout.flush ();
 
     // Rearm recovered thresholds, never merely because a charger was connected.
-    while (next_threshold < 30 && level >= next_threshold + 5 + HYSTERESIS) {
+    while (next_threshold < 35 && level >= next_threshold + 5 + HYSTERESIS) {
       next_threshold += 5;
     }
 

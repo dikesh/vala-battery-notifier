@@ -1,8 +1,8 @@
 # Battery Notifier
 
-A small, event-driven Vala application that sends desktop notifications when the battery reaches 30% and each lower 5% threshold while discharging. It uses Gio D-Bus directly to communicate with UPower and your notification daemon, without polling.
+A small, event-driven Vala application that sends desktop notifications when the battery reaches 35% and each lower 5% threshold while discharging. It uses Gio D-Bus directly to communicate with UPower and your notification daemon, without polling.
 
-Notifications have normal urgency at 30% and 25%, and critical urgency at 20% and below. Each threshold rearms only after the battery recovers 2 percentage points above it, preventing repeated alerts from briefly reconnecting the charger. UPower restarts are handled automatically.
+Notifications have normal urgency at 35%, 30%, and 25%, and critical urgency at 20% and below. Each threshold rearms only after the battery recovers 2 percentage points above it, preventing repeated alerts from briefly reconnecting the charger. UPower restarts are handled automatically.
 
 ## Requirements
 
